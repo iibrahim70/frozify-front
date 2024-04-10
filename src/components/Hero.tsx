@@ -1,6 +1,6 @@
 "use client";
 
-// Import Swiper components
+// Import Swiper components & Image
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay, Pagination } from "swiper/modules";
 import Image from "next/image";
@@ -15,7 +15,7 @@ import bannerFive from "@/assets/banner/banner-5.jpg";
 import "swiper/css";
 import "swiper/css/pagination";
 
-// Create an array of banner images (excluding the first one, which is a video)
+// Create an array of banner images
 const bannerImages = [bannerTwo, bannerThree, bannerFour, bannerFive];
 
 const Hero = () => {
@@ -25,7 +25,7 @@ const Hero = () => {
         spaceBetween={30}
         centeredSlides={true}
         autoplay={{
-          delay: 2000,
+          delay: 2500,
           disableOnInteraction: false,
         }}
         pagination={{
@@ -34,6 +34,7 @@ const Hero = () => {
         modules={[Autoplay, Pagination]}
         className="mySwiper"
       >
+        {/* First Swiper slide with the MP4 video */}
         <SwiperSlide>
           <video
             autoPlay
@@ -43,6 +44,7 @@ const Hero = () => {
           />
         </SwiperSlide>
 
+        {/* Dynamically render Swiper slides for JPG banner images */}
         {bannerImages.map((banner, index) => (
           <SwiperSlide key={index}>
             <Image src={banner} alt={`Banner ${index + 2}`} />
