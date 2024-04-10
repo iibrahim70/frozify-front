@@ -1,11 +1,14 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Bai_Jamjuree } from "next/font/google";
 import { cn } from "@/lib/utils";
-import "./globals.css";
-import Navbar from "@/components/shared/Navbar";
 import { ThemeProvider } from "@/providers/theme-provider";
+import Navbar from "@/components/shared/Navbar";
+import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+const baiJamJure = Bai_Jamjuree({
+  subsets: ["latin"],
+  weight: ["200", "300", "400", "500", "600", "700"],
+});
 
 export const metadata: Metadata = {
   title: "Frozify",
@@ -19,7 +22,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={cn(inter.className)}>
+      <body className={cn(baiJamJure.className)}>
         <ThemeProvider attribute="class" defaultTheme="dark">
           <Navbar />
           {children}
